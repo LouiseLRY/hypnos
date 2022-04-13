@@ -1,0 +1,24 @@
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "~bootstrap/scss/bootstrap";
+
+// Import variables and components
+@import "include-scss/utils/variables";
+@import "include-scss/utils/mixin";
+@import "include-scss/utils/components";
+
+//Import layout elements
+@import "include-scss/layout/navbar";
+@import "include-scss/layout/footer";
+
+//Generals
+body {
+    background: $eggshell;
+    font-family: $text-body;
+    letter-spacing: 1px;
+}
+
+
+// Import pages
+@import "include-scss/pages/home";
+@import "include-scss/pages/establishments";
+@import "include-scss/pages/account";

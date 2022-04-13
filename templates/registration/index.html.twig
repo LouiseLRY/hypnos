@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - Inscription{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page">
+        <h2>Inscription</h2>
+    </div>
+
+    <div class="container account">
+        <div class="row">
+        <div class="col-md-6">
+            <img src="{{ asset('assets/images/roses-bed.jpg') }}" alt="Des roses sur un lit" class="img-fluid">
+        </div>
+        <div class="col-md-6 mt-5">
+            <h3>Vos Informations Personnelles</h3>
+            {% if notification %}
+                <div class="alert alert-warning">{{ notification }}</div>
+                <hr>
+            {% endif %}
+            {{ form(form) }}
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}

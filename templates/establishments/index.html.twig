@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - Nos Établissements{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="heading-page text-center">
+            <h2> Découvrez nos Établissements</h2>
+        </div>
+
+        <section class="establishment-cards">
+            <div class="row">
+                {% for establishment in establishments %}
+                <div class="col-md-6 d-flex flex-column align-items-center">
+                    <div class="card">
+                        <img class="card-img-top" src="/uploads/{{ establishment.image }}"
+                             alt="{{ establishment.name }}">
+                        <div class="card-body">
+                            <a href="{{ path('establishment', {'id' : establishment.id }) }}">
+                            <h3 class="card-title">{{ establishment.city}} - {{ establishment.name }}</h3>
+                            <div class="card-text text-start mt-3">{{ establishment.description | raw }}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+
+        </section>
+    </div>
+
+{% endblock %}

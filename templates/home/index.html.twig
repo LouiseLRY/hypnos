@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels{% endblock %}
+
+{% block content %}
+
+{#    History of Hypnos #}
+
+    <section id="history-nav">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 bg-part"></div>
+            <div class="col-sm-12 col-md-6 written-part d-flex flex-column align-items-center">
+                <img class="my-4" src="{{ asset("assets/images/logo-sealbrown.png") }}" alt="logo hypnos" width="50">
+                <h2>Notre Histoire</h2>
+                <p>Découvrez l'histoire unique du groupe Hypnos Hôtels. Des établissements <strong>luxueux</strong>
+                    pour des séjours <strong>sexy et romantiques</strong> dans des suites magnifiques.
+                    <br> De sa création aux inspirations des différents établissements, apprenez-en un peu plus sur nous
+                    et plongez dans l'univers du <strong>romantisme et du charme Hypnos</strong>.</p>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+    </section>
+
+{#    Establishments #}
+
+    <section id="establishments-nav">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 written-part d-flex flex-column align-items-center">
+                <img class="my-4" src="{{ asset("assets/images/logo-sealbrown.png") }}" alt="logo hypnos" width="50">
+                <h2>Nos Établissements</h2>
+                <p>Découvrez nos 7 établissements situés aux quatre coins de la France et choisissez où passer votre
+                    prochain <strong>séjour romantique</strong>. Tous nommés en honneur de vos acteurs de films
+                    romantiques préférés, chacun de nos établissements est doté de son ambiance et de son caractère.
+                    Mais tous ont un point commun : <strong>le luxe et le charme</strong>, pour accompagner votre romance.
+                </p>
+                <a href="{{ path('establishments') }}" class="btn">Découvrir</a>
+            </div>
+            <div class="col-sm-12 col-md-6 bg-part"></div>
+        </div>
+    </section>
+
+    {#    Contact #}
+
+    <section id="contact-nav">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 bg-part"></div>
+            <div class="col-sm-12 col-md-6 written-part d-flex flex-column align-items-center">
+                <img class="my-4" src="{{ asset("assets/images/logo-sealbrown.png") }}" alt="logo hypnos" width="50">
+                <h2>Contactez-nous</h2>
+                <p>Des questions ? Des demandes particulières pour votre séjour ? L'organisation d'une surprise
+                    magique pour votre moitié ? <br> C'est ici que cela se passe ! Contactez l'établissement de
+                    votre choix pour toutes questions ou demande personnalisée.</p>
+                <a href="#" class="btn">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    {#    Booking #}
+
+    <section id="booking-nav">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 written-part d-flex flex-column align-items-center">
+                <img class="my-4" src="{{ asset("assets/images/logo-sealbrown.png") }}" alt="logo hypnos" width="50">
+                <h2>Réservez une suite</h2>
+                <p>Vous avez choisi votre destination ? Vous avez succombé à l'une de nos <strong>luxueuse
+                        suite</strong> ? <br> Réservez dès maintenant votre <strong>séjour romantique</strong> !</p>
+                <a href="#" class="btn">Réserver</a>
+            </div>
+            <div class="col-sm-12 col-md-6 bg-part"></div>
+        </div>
+    </section>
+
+
+{% endblock %}

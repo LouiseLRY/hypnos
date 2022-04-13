@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - {{ establishment.city }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="heading-page text-center">
+            <h2> Hôtel - {{ establishment.name}} <br> Nos Suites </h2>
+        </div>
+<div class="row">
+    {% for suite in suites %}
+    <div class="col">
+        <div class="suite-card d-flex flex-column flex-lg-row justify-content-center mb-5">
+            <img class="mx-auto" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite" width="380px">
+            <div class="suite-infos ms-5">
+                <h3 class="my-4">Suite "{{ suite.name }}"</h3>
+                <p>{{ suite.description|raw }}</p>
+                <div class="d-flex justify-content-lg-end justify-content-center">
+                <a href="{{ suite.bookingLink }}" class="btn">Voir sur Booking.fr</a>
+                <a href="#" class="btn mx-5">Réserver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    </div>
+
+{% endblock %}

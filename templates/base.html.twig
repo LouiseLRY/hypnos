@@ -1,19 +1,115 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Hypnos Hôtels{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-xl">
+    <a class="navbar-brand" href="{{ path('home') }}">
+        <img src="{{ asset('assets/images/logo-white.png') }}" alt="logo Hypnos" width="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('establishments') }}">Nos Établissements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">A propos d'Hypnos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nous Contacter</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-nav" href="#">Réserver</a>
+            </li>
+        </ul>
+
+
+        <div class="navbar-item-custom">
+            {% if app.user %}
+                <a class="hoverable" href="{{ path('account') }}">Mon Compte
+                    <small>({{ app.user.firstname }})</small></a> | <a
+                    class="hoverable" href="{{ path
+                ('app_logout') }}">Se déconnecter</a>
+
+            {% else %}
+                <a class="hoverable" href="{{ path('app_login') }}">Connexion</a> | <a class="hoverable" href="{{ path
+                ('registration') }}">Inscription</a>
+
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="container-fluid">
+        <div class="row g-0 header-row">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/images/logo-hypnos.png') }}" alt="logo hypnos" width="250">
+            </div>
+            <div class="col-md-6 col-sm-0 d-flex align-items-md-center justify-content-center
+            justify-content-lg-start">
+                <h1 class="ms-5">Le Luxe, <br> Le Charme,<br>L'Amour </h1></div>
+        </div>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+
+{#    Footer #}
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/images/logo-hypnos-white.png') }}" alt="logo Hypnos" width="180">
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-center">
+                <p class="text-center mb-5">Groupe Hypnos Hotels <br> Quartier Général <br> 123, Avenue Jules
+                    Vernes <br>
+                    75000 PARIS
+                    Cedex 1</p>
+                <ul class="socials-icons list-inline">
+                    <li class="list-inline-item"><i class="fa-brands fa-facebook"></i></li>
+                    <li class="list-inline-item"><i class="fa-brands fa-instagram"></i></li>
+                    <li class="list-inline-item"><i class="fa-brands fa-linkedin"></i></li>
+                    <li class="list-inline-item"><i class="fa-brands fa-twitter"></i></li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <ul class="nav-footer">
+                    <li><a href="{{ path('establishments') }}">Nos établissements</a></li>
+                    <li><a href="#">Notre Histoire</a></li>
+                    <li><a href="#">Nous contacter</a></li>
+                    <li><a href="#">Termes et conditions de Ventes</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-3 copyright">
+                <p>2020 © Tous droits réservés</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
 </html>

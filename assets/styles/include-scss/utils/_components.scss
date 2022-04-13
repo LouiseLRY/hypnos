@@ -1,0 +1,46 @@
+.btn {
+  background: $warm-black;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  padding: 10px 40px;
+  font-family: $sub-title;
+  text-transform: uppercase;
+
+  &:hover {
+    background: $copper;
+    color: #fff;
+  }
+
+  &-manager{
+    padding: 5px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+h1, h2 {
+  font-family: $main-title;
+}
+
+h1 {
+  font-size: 5vw;
+  font-weight: 600;
+
+  @include media('md') {
+    font-size: 3.5vw;
+    letter-spacing: 1.3rem;
+  }
+}
+
+.heading-page h2 {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  width: fit-content;
+  margin: 100px auto;
+  padding: 10px 0;
+  letter-spacing: 8px;
+}
+
+h3 {
+  font-family: $sub-title;
+}

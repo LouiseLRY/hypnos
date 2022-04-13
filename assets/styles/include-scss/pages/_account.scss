@@ -1,0 +1,73 @@
+//Registration
+
+ .login, .account {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  margin-bottom: 150px;
+}
+
+.account{
+  padding: 100px;
+}
+
+form {
+  margin-top: 50px;
+}
+
+.form-control {
+  margin-bottom: 50px;
+}
+
+//Login
+
+.login {
+  width: 30%;
+  padding: 30px 60px;
+
+  form p a {
+    color: $copper;
+  }
+}
+
+
+//Account
+
+.account-item {
+  background: $warm-black;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 1s;
+
+  a {
+    color: #fff;
+    transition: 1s;
+
+    i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  &:hover {
+    background: $copper;
+
+    a {
+      color: $warm-black;
+    }
+  }
+}
+
+//Change Password
+
+.account-title {
+  text-decoration: underline;
+  font-family: $main-title;
+}
+
+
+// Manager Interface
+

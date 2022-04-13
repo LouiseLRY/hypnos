@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ManagerController!{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page text-center">
+        <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment }}"</h2>
+    </div>
+
+    <div class="container account">
+        <div class="row">
+            <div class="col">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

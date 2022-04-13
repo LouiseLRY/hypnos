@@ -1,0 +1,56 @@
+section {
+  p {
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .written-part{
+    padding: 60px 120px;
+  }
+
+  a {
+    margin-top: 100px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+
+#history-nav {
+  .bg-part {
+    background-image: url("../../../../public/assets/images/champagne-couple.jpg");
+    background-size: cover;
+    background-position: 0 55%;
+    height: 700px;
+  }
+}
+
+#establishments-nav {
+  .bg-part {
+    background-image: url("../../../../public/assets/images/lobby3.jpg");
+    background-size: cover;
+    background-position: 0 70%;
+    height: 700px;
+  }
+}
+
+#contact-nav {
+  .bg-part {
+    background-image: url("../../../../public/assets/images/lobby.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+  }
+}
+
+#booking-nav {
+  .bg-part {
+    background-image: url("../../../../public/assets/images/couple-bathtub.jpg");
+    background-size: cover;
+    background-position: 0 75%;
+    height: 700px;
+  }
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - Mon espace client{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page">
+        <h2>Bienvenue dans votre espace client, {{ app.user.firstname }}</h2>
+    </div>
+
+    <div class="container account">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="account-item text-center">
+                    <a href="{{ path('change_password') }}"><i class="fa-solid fa-lock"></i> <br> Modifier mon mot de
+                        passe </a>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="account-item text-center">
+                    <a href="#"><i class="fa-solid fa-calendar-days"></i> <br> Gérer mes réservations</a><br>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="account-item text-center">
+                    <a href="/admin"><i class="fa-solid fa-calendar-days"></i> <br> Accéder à l'administration</a><br>
+                </div>
+            </div>
+            {% endif %}
+            {% if is_granted('ROLE_MANAGER') %}
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="account-item text-center">
+                    <a href="{{ path('manager_interface') }}"><i class="fa-solid fa-calendar-days"></i> <br> Gérer mon
+                        établissement</a><br>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

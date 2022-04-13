@@ -1,0 +1,32 @@
+footer {
+  background: $copper;
+  padding-top: 80px;
+  color: white;
+  font-size: 0.9rem;
+
+  .socials-icons{
+    list-style: none;
+
+    li i {
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+  .nav-footer {
+    list-style: none;
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    a {
+      color:white;
+      text-decoration: underline;
+    }
+  }
+
+  .copyright{
+    font-size: 0.6rem;
+  }
+}

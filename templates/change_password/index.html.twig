@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - Modifier mon mot de passe{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page">
+        <h2>Bienvenue dans votre espace client, {{ app.user.firstname }}</h2>
+    </div>
+
+    <div class="container account">
+        <div class="col">
+            <h3 class="account-title">Modifier mon mot de passe</h3>
+    {% if notification %}
+        <div class="alert alert-warning">{{ notification }}</div>
+    {% endif %}
+    {{ form(form) }}
+        </div>
+    </div>
+
+{% endblock %}

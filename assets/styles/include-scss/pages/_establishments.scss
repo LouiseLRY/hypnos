@@ -1,0 +1,31 @@
+.card {
+  width: 75%;
+  margin-bottom: 50px;
+
+  img {
+    height: 400px;
+  }
+
+  .card-body {
+    background: $warm-black;
+    transition: 1s;
+
+    a {
+      color: #fff;
+    }
+  }
+
+  &:hover {
+    .card-body {
+      background: $copper;
+    }
+  }
+}
+
+// Suites
+
+.suite-card {
+  border-radius: 20px;
+  background-color: rgba(184, 125, 75, 0.3);
+  padding: 20px;
+}

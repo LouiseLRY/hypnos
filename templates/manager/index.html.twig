@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Hôtels - Interface de Management{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page text-center">
+        <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment }}"</h2>
+    </div>
+
+    <div class="container account">
+        <h3 class="text-center mb-5">- Les suites -</h3>
+        <div class="row">
+           <div class="col">
+               <table class="table table-striped align-middle mt-4">
+                   <thead>
+                   <tr>
+                       <th scope="col">Image</th>
+                       <th scope="col">Nom</th>
+                       <th scope="col">Prix</th>
+                       <th scope="col">Options</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   {% for suite in suites %}
+                           <tr>
+                               <td><img src="/uploads/{{ suite.mainImage }}" alt="image de la suite" width="100px"></td>
+                               <td>{{ suite.name }}</td>
+                               <td>{{ suite.price }} / nuit</td>
+                               <td><a href="#" class="btn btn-manager me-4">Détails</a> <a href="{{ path
+                                       ('manager_editSuite', {'id' : suite.id}) }}" class="btn
+                               btn-manager me-4">Modifier</a> <a href="{{ path('manager_delSuite', {'id' : suite.id})
+                                   }}"
+                                                                 class="btn
+                               btn-manager">Supprimer</a></td>
+                           </tr>
+                   {% endfor %}
+                   </tbody>
+               </table>
+           </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <a href="{{ path('manager_addSuite') }}" class="btn">Ajouter une nouvelle suite</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
