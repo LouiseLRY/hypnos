@@ -8,7 +8,7 @@
         <h2>Bienvenue dans votre espace client, {{ app.user.firstname }}</h2>
     </div>
 
-    <div class="container account">
+    <div class="container frame">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <div class="account-item text-center">
@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6 d-flex justify-content-center">
                 <div class="account-item text-center">
-                    <a href="#"><i class="fa-solid fa-calendar-days"></i> <br> Gérer mes réservations</a><br>
+                    <a href="{{ path('accountBooking') }}"><i class="fa-solid fa-calendar-days"></i> <br> Gérer mes réservations</a><br>
                 </div>
             </div>
         </div>

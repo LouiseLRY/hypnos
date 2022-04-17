@@ -18,17 +18,24 @@
   }
 }
 
+.frame {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  margin-bottom: 150px;
+  padding: 50px;
+}
+
 h1, h2 {
   font-family: $main-title;
 }
 
 h1 {
-  font-size: 5vw;
-  font-weight: 600;
+  font-size: 3.5vw;
+  letter-spacing: 1.3rem;
 
   @include media('md') {
-    font-size: 3.5vw;
-    letter-spacing: 1.3rem;
+    font-size: 5vw;
+    font-weight: 600;
   }
 }
 

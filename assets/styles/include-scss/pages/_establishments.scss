@@ -24,8 +24,34 @@
 
 // Suites
 
+.hotel_presentation {
+  //background-color: rgba(255,255,255,0.3);
+  padding: 20px;
+  text-align: center;
+}
+
 .suite-card {
   border-radius: 20px;
   background-color: rgba(184, 125, 75, 0.3);
   padding: 20px;
+
+  .suite-btn {
+    display: flex;
+    justify-content: end;
+
+    .btn {
+      margin-right: 10px;
+
+      @include media('md') {
+        margin-top: 20px;
+      }
+    }
+
+    @include media('md') {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 }
+
+

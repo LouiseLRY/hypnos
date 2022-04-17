@@ -1,11 +1,4 @@
 //Registration
-
- .login, .account {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 30px;
-  margin-bottom: 150px;
-}
-
 .account{
   padding: 100px;
 }
@@ -71,3 +64,10 @@ form {
 
 // Manager Interface
 
+.description-suite {
+  max-width: 500px;
+  background-color: rgba(184,125,75,0.3);
+  margin: 40px auto 20px auto;
+  padding: 20px;
+  border-radius: 20px;
+}

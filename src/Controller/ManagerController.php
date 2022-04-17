@@ -88,45 +88,15 @@ class ManagerController extends AbstractController
         return $this->redirectToRoute('manager_interface');
     }
 
-    #[Route('/manager/modifier-suite/{id}', name: 'manager_editSuite')]
-    public function edit(Request $request, $id): Response
+    #[Route('/manager/details/{id}', name: 'manager_showSuite')]
+    public function show($id): Response
     {
         $suite = $this->entityManager->getRepository(Suites::class)->findOneById($id);
 
-//        Checking if the suite exists and if it belongs to the establishment the current manager is in charge of.
-//        Otherwise, redirect to the manager interface.
-        if (!$suite || $suite->getEstablishment() != $this->getUser()->getEstablishment()) {
-            return $this->redirectToRoute('manager_interface');
-        }
 
-        $form = $this->createForm(SuitesType::class, $suite);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $suite = $form->getData();
-
-//             Treatment of the image file
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form['main_image']->getData();
-
-            if ($imageFile) {
-                $directory = $this->getParameter('kernel.project_dir') . '/public/uploads';
-
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-                $imageFile->move($directory, $newFilename);
-                $suite->setMainImage($newFilename);
-            }
-
-//            Persisting data and flushing
-            $this->entityManager->persist($suite);
-            $this->entityManager->flush();
-
-            return $this->redirectToRoute('manager_interface');
-        }
-
-        return $this->redirectToRoute('manager_addSuite', [
-            'form' => $form->createView()
+        return $this->render('manager/show.html.twig', [
+            'suite' => $suite
         ]);
     }
+
 }

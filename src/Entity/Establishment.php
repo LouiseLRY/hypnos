@@ -37,14 +37,18 @@ class Establishment
     #[ORM\OneToOne(mappedBy: 'establishment', targetEntity: Manager::class, cascade: ['persist', 'remove'])]
     private $manager;
 
+    #[ORM\OneToMany(mappedBy: 'establishment', targetEntity: Booking::class)]
+    private $bookings;
+
     public function __construct()
     {
         $this->suites = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return $this->name;
+        return $this->city.' - '.$this->name;
     }
 
     public function getId(): ?int
@@ -160,6 +164,36 @@ class Establishment
         }
 
         $this->Manager = $Manager;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->setEstablishment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->removeElement($booking)) {
+            // set the owning side to null (unless already changed)
+            if ($booking->getEstablishment() === $this) {
+                $booking->setEstablishment(null);
+            }
+        }
 
         return $this;
     }

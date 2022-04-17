@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Management - Détail de la suite{% endblock %}
+
+{% block content %}
+
+    <div class="heading-page text-center">
+        <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment }}"</h2>
+    </div>
+
+    <div class="container frame">
+        <h3 class="text-center mb-5">- Suite "{{ suite.name }}" -</h3>
+        <div class="row">
+           <div class="col text-center">
+               <img src="/uploads/{{ suite.mainImage }}" alt="image de la suite" width="500px" class="img-fluid">
+               <div class="description-suite">
+                   <p>{{ suite.description }}</p>
+               </div>
+               <span>Prix : <b>{{ suite.price }} € </b> / nuit</span>
+                   <div>
+               <a href="{{ path('manager_delSuite', {'id' : suite.id}) }}" class="btn my-3">Supprimer</a>
+                   </div>
+                   <a href="{{ path('manager_interface') }}" class="btn">Retour à mon espace Manager</a>
+           </div>
+        </div>
+    </div>
+
+{% endblock %}

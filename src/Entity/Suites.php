@@ -32,6 +32,10 @@ class Suites
     #[ORM\JoinColumn(nullable: false)]
     private $establishment;
 
+    public function __toString()
+    {
+        return $this->name.' - '.$this->price.'€ / la nuit';
+    }
 
     public function getId(): ?int
     {

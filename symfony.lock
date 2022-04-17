@@ -2,6 +2,12 @@
     "behat/transliterator": {
         "version": "v1.5.0"
     },
+    "components/bootstrap": {
+        "version": "3.4.1"
+    },
+    "components/jquery": {
+        "version": "3.6.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -89,11 +95,17 @@
     "egulias/email-validator": {
         "version": "3.1.2"
     },
+    "eternicode/bootstrap-datepicker": {
+        "version": "v1.9.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
     "gedmo/doctrine-extensions": {
         "version": "v3.6.0"
+    },
+    "kriswallsmith/assetic": {
+        "version": "v1.0.5"
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
@@ -130,6 +142,9 @@
     },
     "psr/log": {
         "version": "3.0.0"
+    },
+    "robloach/component-installer": {
+        "version": "0.0.12"
     },
     "sensio/framework-extra-bundle": {
         "version": "6.2",

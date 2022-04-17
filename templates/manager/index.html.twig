@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hypnos Hôtels - Interface de Management{% endblock %}
+{% block title %}Hypnos Management - Votre établissement{% endblock %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
         <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment }}"</h2>
     </div>
 
-    <div class="container account">
+    <div class="container frame">
         <h3 class="text-center mb-5">- Les suites -</h3>
         <div class="row">
            <div class="col">
@@ -26,13 +26,11 @@
                            <tr>
                                <td><img src="/uploads/{{ suite.mainImage }}" alt="image de la suite" width="100px"></td>
                                <td>{{ suite.name }}</td>
-                               <td>{{ suite.price }} / nuit</td>
-                               <td><a href="#" class="btn btn-manager me-4">Détails</a> <a href="{{ path
-                                       ('manager_editSuite', {'id' : suite.id}) }}" class="btn
-                               btn-manager me-4">Modifier</a> <a href="{{ path('manager_delSuite', {'id' : suite.id})
-                                   }}"
-                                                                 class="btn
-                               btn-manager">Supprimer</a></td>
+                               <td>{{ suite.price }} € / nuit</td>
+                               <td><a href="{{ path('manager_showSuite', {'id' : suite.id}) }}" class="btn btn-manager
+                               me-4">Détails</a><a href="{{ path
+                                       ('manager_delSuite', {'id' : suite.id})
+                                   }}" class="btn btn-manager">Supprimer</a></td>
                            </tr>
                    {% endfor %}
                    </tbody>

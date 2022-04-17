@@ -15,8 +15,6 @@
     {% endblock %}
 </head>
 <body>
-
-
 <nav class="navbar navbar-expand-xl">
     <a class="navbar-brand" href="{{ path('home') }}">
         <img src="{{ asset('assets/images/logo-white.png') }}" alt="logo Hypnos" width="40">
@@ -37,7 +35,7 @@
                 <a class="nav-link" href="#">Nous Contacter</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-nav" href="#">Réserver</a>
+                <a class="btn btn-nav" href="{{ path('booking') }}">Réserver</a>
             </li>
         </ul>
 
@@ -110,6 +108,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

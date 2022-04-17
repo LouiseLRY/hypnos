@@ -8,7 +8,7 @@
         <h2>Inscription</h2>
     </div>
 
-    <div class="container account">
+    <div class="container frame">
         <div class="row">
         <div class="col-md-6">
             <img src="{{ asset('assets/images/roses-bed.jpg') }}" alt="Des roses sur un lit" class="img-fluid">
@@ -20,6 +20,7 @@
                 <hr>
             {% endif %}
             {{ form(form) }}
+            <p class="text-center">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">connectez-vous</a>.</p>
         </div>
         </div>
     </div>
