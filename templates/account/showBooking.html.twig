@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Hypnos Hôtels - Mes Réservations {% endblock %}
+
+{% block content %}
+
+    <div class="heading-page">
+        <h2>Bienvenue dans votre espace client, {{ app.user.firstname }}</h2>
+    </div>
+
+    <div class="container frame">
+        {% for booking in booking %}
+        <h3 class="text-center mb-5">- Votre Réservation à l'établissement "{{ booking.establishment.name }}" -</h3>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <img class="img-fluid mb-5 mb-md-0" src="/uploads/{{ booking.suite.mainImage }}" alt="Votre suite"
+                     width="400">
+            </div>
+            <div class="col-md-8 col-sm-12 d-flex flex-column justify-content-evenly">
+                <p><b>Hôtel : </b>{{ booking.establishment.name }}</p>
+                <p><b>Adresse : </b>{{ booking.establishment.address }} - {{ booking.establishment.city }}</p>
+                <p><b>Votre suite : </b>{{ booking.suite.name }}</p>
+                <p><b>Arrivée le : </b>{{ booking.dateStart|date("d/m/Y") }} à partir de 15h.</p>
+                <p><b>Départ le : </b>{{ booking.dateEnd|date("d/m/Y") }} avant 12h.</p>
+                <p><b>Prix de la suite / nuit : </b>{{ booking.suite.price }} €</p>
+                <p><b>Prix total de votre séjour : </b>{{ booking.totalPrice }} €</p>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-5 text-center">
+                <a href="#" class="btn me-md-5 mb-3">Annuler mon séjour</a>
+                <a href="{{ path('accountBooking') }}" class="btn"><i class="far fa-arrow-alt-circle-left fs-5
+                me-2"></i> Retour vers vos réservations</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

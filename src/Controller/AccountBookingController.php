@@ -19,11 +19,22 @@ class AccountBookingController extends AbstractController
     #[Route('/mon-espace-client/mes-reservations', name: 'accountBooking')]
     public function index(): Response
     {
-        dd($this->getUser());
-        $bookings = $this->entityManager->getRepository(Booking::class)->findBy($this->getUser());
+        $user = $this->getUser();
+        $bookings = $this->entityManager->getRepository(Booking::class)->findByUser($user);
 
         return $this->render('account/bookings.html.twig', [
-            'controller_name' => 'AccountBookingController',
+            'bookings' => $bookings,
+        ]);
+    }
+
+    #[Route('/mon-espace-client/mes-reservations/{id}', name: 'showBooking')]
+    public function show($id): Response
+    {
+
+        $booking = $this->entityManager->getRepository(Booking::class)->findById($id);
+
+        return $this->render('account/showBooking.html.twig', [
+            'booking' => $booking,
         ]);
     }
 }

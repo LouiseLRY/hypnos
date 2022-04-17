@@ -13,11 +13,6 @@
     </div>
     <div class="container frame">
         <div class="row">
-            {% for label, messages in app.flashes(['success', 'error']) %}
-            {% for message in messages %}
-            <div class="flash flash-{{ label }}">{{ message }}</div>
-            {% endfor %}
-            {% endfor %}
             <div class="col text-center">
                 <img src="/uploads/{{ suite.mainImage }}" alt="Notre petit déjeuner continental"
                      width="500">

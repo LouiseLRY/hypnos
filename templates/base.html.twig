@@ -68,7 +68,11 @@
         </div>
     </div>
 </header>
-
+{% for label, messages in app.flashes(['success', 'error']) %}
+    {% for message in messages %}
+        <div class="flash flash-{{ label }}">{{ message }}</div>
+    {% endfor %}
+{% endfor %}
 {% block content %}{% endblock %}
 
 {#    Footer #}

@@ -49,7 +49,7 @@ class BookingRepository extends ServiceEntityRepository
     //  * @return Booking[] Returns an array of Booking objects
     //  */
 
-    public function findByVacancy($dateStart, $dateEnd)
+    public function findByVacancy($dateStart, $dateEnd, $suite)
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.dateStart BETWEEN :dateStart AND :dateEnd')
@@ -57,19 +57,21 @@ class BookingRepository extends ServiceEntityRepository
             ->orWhere('b.dateStart <= :dateStart AND b.dateEnd >= :dateEnd')
             ->setParameter('dateStart', $dateStart)
             ->setParameter('dateEnd', $dateEnd)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findBySuite($suite)
-    {
-        return $this->createQueryBuilder('b')
             ->andWhere('b.suite = :suite')
             ->setParameter('suite', $suite)
             ->getQuery()
             ->getResult();
     }
 
+
+    public function findByUser($user)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.custommer = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?Booking

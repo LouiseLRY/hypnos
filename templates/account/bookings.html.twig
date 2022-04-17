@@ -4,4 +4,46 @@
 
 {% block content %}
 
+    <div class="heading-page">
+        <h2>Bienvenue dans votre espace client, {{ app.user.firstname }}</h2>
+    </div>
+
+    <div class="container frame">
+        <h3 class="text-center mb-5">- Vos Réservations -</h3>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped align-middle mt-4">
+                    <thead>
+                    <tr>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Suite</th>
+                        <th scope="col">Dates</th>
+                        <th scope="col">Prix Total</th>
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.reference }}</td>
+                            <td>{{ booking.suite.name }}</td>
+                            <td>Du {{ booking.dateStart|date("d/m/Y") }} au {{ booking.dateEnd|date("d/m/Y") }}</td>
+                            <td>{{ booking.totalPrice }} €</td>
+                            <td><a href="{{path('showBooking', {id: booking.id})}}" class="btn">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="{{ path('account') }}" class="btn mt-5"><i class="far fa-arrow-alt-circle-left fs-5 me-2"></i>
+                    Retour
+                    vers votre espace client</a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

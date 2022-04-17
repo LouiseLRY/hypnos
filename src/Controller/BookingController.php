@@ -85,30 +85,29 @@ class BookingController extends AbstractController
             $newBooking->setTotalPrice($total_price);
             $newBooking->setEstablishment($suite->getEstablishment());
 
-            if (!$this->entityManager->getRepository(Booking::class)->findBySuite($newBooking->getSuite())) {
+//            $bookedSuite = $this->entityManager->getRepository(Booking::class)->findBySuite($newBooking->getSuite());
+            $bookedDates = $this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
+                $newBooking->getDateEnd(), $newBooking->getSuite());
+
+            if (!$bookedDates) {
                 $this->entityManager->persist($newBooking);
                 $this->entityManager->flush();
                 $this->addFlash('success', 'Votre réservation a bien été prise en compte.');
-            } else if (!$this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
-                $newBooking->getDateEnd())) {
-//            Persist and flush the booking to the DB
-                    $this->entityManager->persist($newBooking);
-                    $this->entityManager->flush();
-                    $this->addFlash('success', 'Votre réservation a bien été prise en compte.');
-                } else {
-                    $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates. ');
-                    unset($newBooking);
-                }
-
-//                return $this->redirectToRoute('account');
+                return $this->redirectToRoute('accountBooking');
+            } else {
+                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates. ');
+                unset($newBooking);
             }
 
-            return $this->render('booking/oneSuite.html.twig', [
-                'form' => $form->createView(),
-                'suite' => $suite
-            ]);
+//                return $this->redirectToRoute('account');
         }
 
+        return $this->render('booking/oneSuite.html.twig', [
+            'form' => $form->createView(),
+            'suite' => $suite
+        ]);
     }
+
+}
 
 
