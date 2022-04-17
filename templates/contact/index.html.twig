@@ -3,14 +3,30 @@
 {% block title %}Hypnos Hôtels - Contact{% endblock %}
 
 {% block content %}
-<div class="heading-page">
-    <h2>Nous Contacter</h2>
-</div>
+    <div class="heading-page">
+        <h2>Nous Contacter</h2>
+    </div>
 
     <div class="container frame">
         <div class="row">
             <div class="col">
-
+                {{ form_start(form) }}
+                {{ form_row(form.establishment) }}
+                {{ form_row(form.subject) }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">{{ form_row(form.firstName) }}</div>
+            <div class="col-md-6">{{ form_row(form.lastName) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.email) }}
+                {{ form_row(form.message) }}
+                <div class="text-center">
+                {{ form_row(form.submit) }}
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

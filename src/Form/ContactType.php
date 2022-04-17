@@ -3,15 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Establishment;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Choice;
 
 class ContactType extends AbstractType
 {
@@ -21,12 +21,16 @@ class ContactType extends AbstractType
             ->add('establishment', EntityType::class, [
                 'label' => 'Quel établissement souhaitez-vous contacter ?',
                 'class' => Establishment::class,
-                'placeholder' => 'Sélectionnez un établissement',
+                'attr' => [
+                    'placeholder' => 'Sélectionnez un établissement'
+                ],
                 'required' => true
             ])
             ->add('subject', ChoiceType::class, [
                 'label' => 'Quel est le sujet de votre message ?',
-                'placeholder' => 'Sélectionnez le sujet du message',
+                'attr' => [
+                    'placeholder' => 'Sélectionnez le sujet du message'
+                ],
                 'choices' => [
                     'Je souhaite poser une réclamation' => 'Je souhaite poser une réclamation',
                     'Je souhaite commander un service supplémentaire' => 'Je souhaite commander un service supplémentaire',
@@ -36,21 +40,31 @@ class ContactType extends AbstractType
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
-                'placeholder' => 'Votre prénom'
-            ])
+                'attr' => [
+                    'placeholder' => 'Votre prénom'
+                ]])
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
-                'placeholder' => 'Votre nom'
-            ])
+                'attr' => [
+                    'placeholder' => 'Votre nom'
+                ]])
             ->add('email', EmailType::class, [
                 'label' => 'E-mail',
-                'placeholder' => 'Votre adresse e-mail'
-            ])
+                'attr' => [
+                    'placeholder' => 'Votre adresse e-mail'
+                ]])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre message',
-                'placeholder' => 'Tapez votre message'
-            ])
-        ;
+                'attr' => [
+                    'placeholder' => 'Tapez votre message',
+                    'rows' => '10',
+                ]])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'btn btn-lg'
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
