@@ -3,6 +3,10 @@ nav {
   padding: 0.1rem 5rem !important;
   font-size: 0.8rem;
 
+  @include media("md"){
+    padding: 0.1rem 1rem !important;
+  }
+
   .navbar-collapse {
     justify-content: space-between;
   }

@@ -2,8 +2,15 @@
   width: 75%;
   margin-bottom: 50px;
 
+  @include media('md'){
+    width: 100%;
+  }
+
   img {
     height: 400px;
+    @include media('md'){
+      height: auto;
+    }
   }
 
   .card-body {

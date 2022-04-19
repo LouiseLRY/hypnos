@@ -37,8 +37,6 @@ class ContactController extends AbstractController
 
             $mail->send($admin_email, $from_email, $from_name, $subject, $establishment, $message);
             $this->addFlash('success', 'Votre message a bien été envoyé. Notre équipe va vous répondre dans les plus brefs délais.');
-        } else {
-            $this->addFlash('error', 'Il semble y avoir eu un problème avec votre message. Veuillez réessayer.');
         }
 
         return $this->render('contact/index.html.twig', [

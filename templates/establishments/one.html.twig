@@ -12,14 +12,14 @@
     <div class="col">
         <div class="suite-card d-flex flex-column flex-lg-row justify-content-center mb-5">
             <div class="suite-images">
-            <img class="mx-auto" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite" width="380px">
-            <div class="gallery d-flex justify-content-between mt-3">
+            <img class="mx-auto img-fluid" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite" width="380px">
+            <div class="gallery d-flex flex-wrap justify-content-md-between justify-content-evenly mt-3">
                 {% if suite.gallery %}
                 <img src="/uploads/{{ suite.gallery.photo1 }}" alt="photo de la suite"
                      width="120px">
                 <img src="/uploads/{{ suite.gallery.photo2 }}" alt="photo de la suite"
                      width="120px">
-                <img src="/uploads/{{ suite.gallery.photo3 }}" alt="photo de la suite"
+                <img class="mt-3 mt-md-0" src="/uploads/{{ suite.gallery.photo3 }}" alt="photo de la suite"
                      width="120px">
                 {% endif %}
             </div>
