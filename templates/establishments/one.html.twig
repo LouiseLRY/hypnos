@@ -11,7 +11,19 @@
     {% for suite in suites %}
     <div class="col">
         <div class="suite-card d-flex flex-column flex-lg-row justify-content-center mb-5">
+            <div class="suite-images">
             <img class="mx-auto" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite" width="380px">
+            <div class="gallery d-flex justify-content-between mt-3">
+                {% if suite.gallery %}
+                <img src="/uploads/{{ suite.gallery.photo1 }}" alt="photo de la suite"
+                     width="120px">
+                <img src="/uploads/{{ suite.gallery.photo2 }}" alt="photo de la suite"
+                     width="120px">
+                <img src="/uploads/{{ suite.gallery.photo3 }}" alt="photo de la suite"
+                     width="120px">
+                {% endif %}
+            </div>
+            </div>
             <div class="suite-infos ms-lg-5">
                 <h3 class="my-4">Suite "{{ suite.name }}"</h3>
                 <p>{{ suite.description|raw }} </p>

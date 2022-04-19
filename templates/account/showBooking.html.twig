@@ -24,15 +24,16 @@
                 <p><b>Départ le : </b>{{ booking.dateEnd|date("d/m/Y") }} avant 12h.</p>
                 <p><b>Prix de la suite / nuit : </b>{{ booking.suite.price }} €</p>
                 <p><b>Prix total de votre séjour : </b>{{ booking.totalPrice }} €</p>
-            {% endfor %}
             </div>
         </div>
         <div class="row">
             <div class="col mt-5 text-center">
-                <a href="#" class="btn me-md-5 mb-3">Annuler mon séjour</a>
+                <a href="{{path('cancelBooking', {id: booking.id})}}" class="btn me-md-5 mb-3">Annuler mon
+                    séjour</a>
                 <a href="{{ path('accountBooking') }}" class="btn"><i class="far fa-arrow-alt-circle-left fs-5
                 me-2"></i> Retour vers vos réservations</a>
             </div>
+            {% endfor %}
         </div>
     </div>
 

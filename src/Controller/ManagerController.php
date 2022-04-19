@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Gallery;
 use App\Entity\Suites;
+use App\Form\GalleryType;
 use App\Form\SuitesType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -96,6 +98,53 @@ class ManagerController extends AbstractController
 
         return $this->render('manager/show.html.twig', [
             'suite' => $suite
+        ]);
+    }
+
+    #[Route('/manager/ajouter-galerie/{id}', name: 'manager_addGallery')]
+    public function addGallery($id, Request $request): Response
+    {
+        $suite = $this->entityManager->getRepository(Suites::class)->findOneById($id);
+        $gallery = new Gallery();
+        $form = $this->createForm(GalleryType::class, $gallery);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $gallery = $form->getData();
+            $gallery->setSuite($suite);
+
+            //             Treatment of the image file
+            /** @var UploadedFile $imageFile */
+
+            for($i = 1; $i <= 3;  $i++){
+            $imageFile = $form['photo'.$i]->getData();
+                $directory = $this->getParameter('kernel.project_dir') . '/public/uploads';
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move($directory, $newFilename);
+
+                switch ($i) {
+                    case 1 :
+                        $gallery->setPhoto1($newFilename);
+                        break;
+                    case 2 :
+                        $gallery->setPhoto2($newFilename);
+                        break;
+                    case 3 :
+                        $gallery->setPhoto3($newFilename);
+                        break;
+                }
+            }
+            $this->entityManager->persist($gallery);
+            $this->entityManager->flush();
+            return $this->redirectToRoute('manager_interface');
+        }
+
+
+
+        return $this->render('manager/addGallery.html.twig', [
+            'suite' => $suite,
+            'form' => $form->createView()
         ]);
     }
 

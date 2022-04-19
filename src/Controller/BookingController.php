@@ -108,6 +108,27 @@ class BookingController extends AbstractController
         ]);
     }
 
+    #[Route('/annulation/{id}', name: 'cancelBooking')]
+    public function cancel($id): Response
+    {
+        $booking = $this->entityManager->getRepository(Booking::class)->findOneById($id);
+        $arrival = $booking->getDateStart();
+        $today = new \DateTime();
+        $interval = $today->diff($arrival)->format("%a");
+
+        $cancel = false;
+
+        if($interval > 3) {
+            $this->entityManager->remove($booking);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Votre réservation a bien été annulée. Nous espérons vous recevoir bientôt chez Hypnos Hôtels.');
+
+        } else {
+            $this->addFlash('error', 'Vous ne pouvez pas annuler votre réservation à moins de 3 jours de la date 
+            d\'arrivée. Veuillez nous contacter pour tous problème.');
+        }
+        return $this->redirectToRoute('accountBooking');
+    }
 }
 
 

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Hypnos Hôtels{% endblock %}</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
@@ -10,20 +11,19 @@
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
+
 </head>
 <body>
-<nav class="navbar navbar-expand-xl">
+
+<nav class="navbar navbar-expand-xl navbar-dark">
     <a class="navbar-brand" href="{{ path('home') }}">
         <img src="{{ asset('assets/images/logo-white.png') }}" alt="logo Hypnos" width="40">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('establishments') }}">Nos Établissements</a>
@@ -40,15 +40,15 @@
         </ul>
 
 
-        <div class="navbar-item-custom">
+        <div class="navbar-item-custom my-md-0 my-3">
             {% if app.user %}
                 <a class="hoverable" href="{{ path('account') }}">Mon Compte
-                    <small>({{ app.user.firstname }})</small></a> | <a
+                    <small>({{ app.user.firstname }})</small></a> <span class="desktop">|</span> <a
                     class="hoverable" href="{{ path
                 ('app_logout') }}">Se déconnecter</a>
 
             {% else %}
-                <a class="hoverable" href="{{ path('app_login') }}">Connexion</a> | <a class="hoverable" href="{{ path
+                <a class="hoverable" href="{{ path('app_login') }}">Connexion</a> <span class="desktop">|</span> <a class="hoverable" href="{{ path
                 ('registration') }}">Inscription</a>
 
             {% endif %}
@@ -96,7 +96,7 @@
                 </ul>
             </div>
             <div class="col-sm-12 col-md-4">
-                <ul class="nav-footer">
+                <ul class="nav-footer text-center">
                     <li><a href="{{ path('establishments') }}">Nos établissements</a></li>
                     <li><a href="#">Notre Histoire</a></li>
                     <li><a href="{{ path('contact') }}">Nous contacter</a></li>
@@ -112,5 +112,10 @@
         </div>
     </div>
 </footer>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
 </body>
 </html>

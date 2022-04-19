@@ -32,6 +32,9 @@ class Suites
     #[ORM\JoinColumn(nullable: false)]
     private $establishment;
 
+    #[ORM\OneToOne(mappedBy: 'suite', targetEntity: Gallery::class, cascade: ['persist', 'remove'])]
+    private $gallery;
+
     public function __toString()
     {
         return $this->name.' - '.$this->price.'€ / la nuit';
@@ -110,6 +113,23 @@ class Suites
     public function setEstablishment(?Establishment $establishment): self
     {
         $this->establishment = $establishment;
+
+        return $this;
+    }
+
+    public function getGallery(): ?Gallery
+    {
+        return $this->gallery;
+    }
+
+    public function setGallery(Gallery $gallery): self
+    {
+        // set the owning side of the relation if necessary
+        if ($gallery->getSuite() !== $this) {
+            $gallery->setSuite($this);
+        }
+
+        $this->gallery = $gallery;
 
         return $this;
     }

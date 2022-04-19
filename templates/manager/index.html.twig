@@ -5,17 +5,18 @@
 {% block content %}
 
     <div class="heading-page text-center">
-        <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment }}"</h2>
+        <h2>Bienvenue {{ app.user.firstname }}, <br> Vous gérez l'hôtel "{{ app.user.establishment.name }}"</h2>
     </div>
 
     <div class="container frame">
         <h3 class="text-center mb-5">- Les suites -</h3>
         <div class="row">
            <div class="col">
+               <div class="table-responsive">
                <table class="table table-striped align-middle mt-4">
                    <thead>
                    <tr>
-                       <th scope="col">Image</th>
+                       <th scope="col" class="desktop">Image</th>
                        <th scope="col">Nom</th>
                        <th scope="col">Prix</th>
                        <th scope="col">Options</th>
@@ -24,17 +25,26 @@
                    <tbody>
                    {% for suite in suites %}
                            <tr>
-                               <td><img src="/uploads/{{ suite.mainImage }}" alt="image de la suite" width="100px"></td>
+                               <td class="desktop"><img src="/uploads/{{ suite.mainImage }}" alt="image de la suite"
+                                         width="100px"></td>
                                <td>{{ suite.name }}</td>
                                <td>{{ suite.price }} € / nuit</td>
                                <td><a href="{{ path('manager_showSuite', {'id' : suite.id}) }}" class="btn btn-manager
                                me-4">Détails</a><a href="{{ path
                                        ('manager_delSuite', {'id' : suite.id})
-                                   }}" class="btn btn-manager">Supprimer</a></td>
+                                   }}" class="btn btn-manager me-4 mt-md-0 mt-2 d-flex d-md-inline flex-column
+                                   align-items-center py-2">Supprimer</a>
+                               {% if suite.gallery is null %}
+                                   <a href="{{ path('manager_addGallery', {'id': suite.id}) }}" class="btn
+                                   btn-manager">Ajouter une
+                                       galerie d'image</a>
+                                   {% endif %}
+                               </td>
                            </tr>
                    {% endfor %}
                    </tbody>
                </table>
+               </div>
            </div>
         </div>
         <div class="row mt-5">

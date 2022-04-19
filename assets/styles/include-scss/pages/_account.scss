@@ -71,3 +71,22 @@ form {
   padding: 20px;
   border-radius: 20px;
 }
+
+// Booking pages
+
+div.table_repsonsive{
+  margin:10px auto;
+  width:100%;
+  min-width:400px;
+  max-width:700px;
+}
+div.table_repsonsive table{
+  margin: 0;
+  width: 100%;
+}
+
+.desktop {
+@include media('md'){
+  display : none;
+}
+}

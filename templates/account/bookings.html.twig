@@ -12,13 +12,14 @@
         <h3 class="text-center mb-5">- Vos Réservations -</h3>
         <div class="row">
             <div class="col">
+                <div class="table-responsive">
                 <table class="table table-striped align-middle mt-4">
                     <thead>
                     <tr>
-                        <th scope="col">Référence</th>
+                        <th scope="col" class="desktop">Référence</th>
                         <th scope="col">Suite</th>
-                        <th scope="col">Dates</th>
-                        <th scope="col">Prix Total</th>
+                        <th scope="col" class="desktop">Dates</th>
+                        <th scope="col" class="desktop">Prix Total</th>
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -26,15 +27,18 @@
                     <tbody>
                     {% for booking in bookings %}
                         <tr>
-                            <td>{{ booking.reference }}</td>
+                            <td class="desktop">{{ booking.reference }}</td>
                             <td>{{ booking.suite.name }}</td>
-                            <td>Du {{ booking.dateStart|date("d/m/Y") }} au {{ booking.dateEnd|date("d/m/Y") }}</td>
-                            <td>{{ booking.totalPrice }} €</td>
+                            <td class="desktop">Du {{ booking.dateStart|date("d/m/Y") }} au {{ booking.dateEnd|date
+                                    ("d/m/Y")
+                                }}</td>
+                            <td class="desktop">{{ booking.totalPrice }} €</td>
                             <td><a href="{{path('showBooking', {id: booking.id})}}" class="btn">Voir</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
         <div class="row">

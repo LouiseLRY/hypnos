@@ -12,13 +12,33 @@ nav {
   }
 
   .navbar-nav li {
+    @include media('md'){
+      margin-left: 0;
+    }
     margin-left: 150px;
   }
-
+  .navbar-item-custom{
+@include media('md'){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    a{
+      @include media('md'){
+        margin-bottom: 15px;
+      }
+    }
+  }
   .nav-link, a, .navbar-item-custom {
-    color: #fff;
+    color: #fff !important;
     font-family: $sub-title;
     text-transform: uppercase;
+  }
+}
+
+li.nav-item {
+  @include media('md'){
+    text-align: center;
   }
 }
 
@@ -54,6 +74,12 @@ a {
 
   &:hover:after {
     width: 100%;
+  }
+}
+
+.nav-item {
+  @include media('md'){
+    margin: 10px 0;
   }
 }
 
