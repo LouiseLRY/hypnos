@@ -31,24 +31,35 @@ class BookingController extends AbstractController
         $newBooking = new Booking();
         $form = $this->createForm(BookingType::class, $newBooking);
         $form->handleRequest($request);
+        $suite = $this->entityManager->getRepository(Suites::class)->findOneById($_COOKIE['suite']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $now = new \DateTime();
             $reference = $now->format('dmY') . '-' . uniqid();
             $total_nights = date_diff($form->get('dateStart')->getData(), $form->get('dateEnd')->getData());
-            $total_price = 400 * $total_nights->days;
+            $total_price = $suite->getPrice() * $total_nights->days;
 
 //            Setting the data
             $newBooking = $form->getData();
             $newBooking->setCustommer($this->getUser());
             $newBooking->setCreatedAt($now);
             $newBooking->setReference($reference);
+            $newBooking->setSuite($suite);
+            $newBooking->setTotalPrice($total_price);
 
-            dd($_POST);
+//            Checking for vacancy
+            $bookedDates = $this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
+                $newBooking->getDateEnd(), $newBooking->getSuite());
 
-//            Persist and flush the booking to the DB
-            $this->entityManager->persist($newBooking);
-            $this->entityManager->flush();
+            if (!$bookedDates) {
+                $this->entityManager->persist($newBooking);
+                $this->entityManager->flush();
+                $this->addFlash('success', 'Votre réservation a bien été prise en compte.');
+                return $this->redirectToRoute('accountBooking');
+            } else {
+                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates. ');
+                unset($newBooking);
+            }
         }
 
         return $this->render('booking/form.html.twig', [
@@ -85,7 +96,6 @@ class BookingController extends AbstractController
             $newBooking->setTotalPrice($total_price);
             $newBooking->setEstablishment($suite->getEstablishment());
 
-//            $bookedSuite = $this->entityManager->getRepository(Booking::class)->findBySuite($newBooking->getSuite());
             $bookedDates = $this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
                 $newBooking->getDateEnd(), $newBooking->getSuite());
 
@@ -99,7 +109,6 @@ class BookingController extends AbstractController
                 unset($newBooking);
             }
 
-//                return $this->redirectToRoute('account');
         }
 
         return $this->render('booking/oneSuite.html.twig', [
