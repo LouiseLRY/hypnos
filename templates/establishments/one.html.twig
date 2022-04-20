@@ -12,7 +12,7 @@
     <div class="col">
         <div class="suite-card d-flex flex-column flex-lg-row justify-content-center mb-5">
             <div class="suite-images">
-            <img class="mx-auto img-fluid" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite" width="380px">
+            <img class="mx-auto mainSuiteImage" src="/uploads/{{ suite.mainImage }}" alt="Image de la Suite">
             <div class="gallery d-flex flex-wrap justify-content-md-between justify-content-evenly mt-3">
                 {% if suite.gallery %}
                 <img src="/uploads/{{ suite.gallery.photo1 }}" alt="photo de la suite"

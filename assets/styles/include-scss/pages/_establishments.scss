@@ -42,6 +42,13 @@
   background-color: rgba(184, 125, 75, 0.3);
   padding: 20px;
 
+  .mainSuiteImage{
+    width: 380px;
+
+    @include media("md"){
+      width: 300px;
+    }
+  }
   .suite-btn {
     display: flex;
     justify-content: end;
