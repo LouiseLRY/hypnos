@@ -7,6 +7,9 @@ section {
 
   .written-part{
     padding: 60px 120px;
+    @include media('md'){
+      padding: 20px;
+    }
   }
 
   a {

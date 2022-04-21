@@ -31,9 +31,9 @@ class BookingController extends AbstractController
         $newBooking = new Booking();
         $form = $this->createForm(BookingType::class, $newBooking);
         $form->handleRequest($request);
-        $suite = $this->entityManager->getRepository(Suites::class)->findOneById($_COOKIE['suite']);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $suite = $this->entityManager->getRepository(Suites::class)->findOneById($_COOKIE['suite']);
             $now = new \DateTime();
             $reference = $now->format('dmY') . '-' . uniqid();
             $total_nights = date_diff($form->get('dateStart')->getData(), $form->get('dateEnd')->getData());
@@ -127,7 +127,7 @@ class BookingController extends AbstractController
 
         $cancel = false;
 
-        if($interval > 3) {
+        if ($interval > 3) {
             $this->entityManager->remove($booking);
             $this->entityManager->flush();
             $this->addFlash('success', 'Votre réservation a bien été annulée. Nous espérons vous recevoir bientôt chez Hypnos Hôtels.');
