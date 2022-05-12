@@ -51,13 +51,13 @@ class BookingController extends AbstractController
             $bookedDates = $this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
                 $newBooking->getDateEnd(), $newBooking->getSuite());
 
-            if (!$bookedDates) {
+            if (!$bookedDates && $newBooking->getDateStart() > $now) {
                 $this->entityManager->persist($newBooking);
                 $this->entityManager->flush();
                 $this->addFlash('success', 'Votre réservation a bien été prise en compte.');
                 return $this->redirectToRoute('accountBooking');
             } else {
-                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates. ');
+                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates ou vous avez sélectionné une date antérieure. ');
                 unset($newBooking);
             }
         }
@@ -99,13 +99,13 @@ class BookingController extends AbstractController
             $bookedDates = $this->entityManager->getRepository(Booking::class)->findByVacancy($newBooking->getDateStart(),
                 $newBooking->getDateEnd(), $newBooking->getSuite());
 
-            if (!$bookedDates) {
+            if (!$bookedDates && $newBooking->getDateStart() > $now) {
                 $this->entityManager->persist($newBooking);
                 $this->entityManager->flush();
                 $this->addFlash('success', 'Votre réservation a bien été prise en compte.');
                 return $this->redirectToRoute('accountBooking');
             } else {
-                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates. ');
+                $this->addFlash('error', 'La suite choisie n\'est pas disponible à ces dates ou vous avez sélectionné une date antérieure. ');
                 unset($newBooking);
             }
 

@@ -15,10 +15,6 @@
         </div>
         <div class="col-md-6 mt-5">
             <h3>Vos Informations Personnelles</h3>
-            {% if notification %}
-                <div class="alert alert-warning">{{ notification }}</div>
-                <hr>
-            {% endif %}
             {{ form(form) }}
             <p class="text-center">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">connectez-vous</a>.</p>
         </div>

@@ -23,7 +23,6 @@ class RegistrationController extends AbstractController
     #[Route('/inscription', name: 'registration')]
     public function index(Request $request, UserPasswordHasherInterface $hasher): Response
     {
-        $notification = null;
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
 
@@ -41,16 +40,15 @@ class RegistrationController extends AbstractController
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
-                $notification = 'Votre inscription s\'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.';
+              $this->addFlash('success', 'Votre inscription s\'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.');
             } else {
 
-                $notification = 'L\'e-mail que vous avez renseigné existe déjà.';
+                $this->addFlash('error', 'L\'e-mail que vous avez renseigné existe déjà.');
             }
         }
 
         return $this->render('registration/index.html.twig', [
-            'form' => $form->createView(),
-            'notification' => $notification
+            'form' => $form->createView()
         ]);
     }
 }
