@@ -104,7 +104,7 @@ class Manager implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-//        Ensures that every user has at least the role USER
+//        Ensures that every manager has the role MANAGER
         $roles[] = 'ROLE_MANAGER';
 
         return array_unique($roles);

@@ -39,9 +39,6 @@ class ManagerCrudController extends AbstractCrudController
                 ->setRequired($pageName === Crud::PAGE_NEW)
                 ->onlyOnForms()
                 ->setFormType(PasswordType::class),
-            ChoiceField::new('roles', 'Rôles')
-                ->setChoices(['Manager' => "ROLE_MANAGER", 'Utilisateur' => "ROLE_USER"])
-                ->allowMultipleChoices(true),
             AssociationField::new('establishment', 'Établissement')->renderAsNativeWidget()
         ];
     }

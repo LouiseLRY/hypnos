@@ -40,7 +40,7 @@ security:
   access_control:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/manager, roles: ROLE_MANAGER }
-    - { path: ^/mon-espace-client, roles: ROLE_USER }
+    - { path: ^/mon-espace-client, roles: [ROLE_USER, ROLE_MANAGER] }
 
 when@test:
   security:
