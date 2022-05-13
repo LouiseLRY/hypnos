@@ -92,6 +92,8 @@ a {
 header {
   background-image: url("../../../../public/assets/images/header.png");
   height: 550px;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .header-row {
     height: 550px;
